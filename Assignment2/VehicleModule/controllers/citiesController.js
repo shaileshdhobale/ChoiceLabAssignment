@@ -17,7 +17,15 @@ var logger = new Logger('[citiesController]');
 var getAllCitiesByStateWise = function (req, res) {
     var METHOD_NAME = "[getAllCitiesByStateWise] ";
     var response;
-    citiesService.getAllCitiesByStateWise(function(error, result ){
+    var state = req.query.state;
+    if(_.isEmpty(state)) {
+        response = {
+            status: 400,
+            message: constants.BAD_REQUEST
+        };
+        return res.status(400).send(response);
+    }
+    citiesService.getAllCitiesByStateWise(state, function(error, result ){
         if (error) {
             logger.error(METHOD_NAME + error);
             response = {

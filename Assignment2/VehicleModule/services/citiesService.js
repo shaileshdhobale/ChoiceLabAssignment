@@ -10,20 +10,24 @@ var model = require('../dao/db.js');
 var Logger = require('../utils/logger.js').Logger;
 var logger = new Logger('[citiesService]');
 
-var getAllCitiesByStateWise = function(callback) {
+var getAllCitiesByStateWise = function(state, callback) {
     var METHOD_NAME = "[getAllCitiesByStateWise] ";
     model.cities.aggregate([
+        {   
+            $match:{
+                state: {$regex: state, $options: 'i'}    
+            }
+        },
         {
             $group: {
-                _id: "$state",
-                Cities: {$push: "$city"}
+                _id: null,
+                cities: {$push: "$city"}
             }
         },
         {
             $project: {
                 _id: 0,
-                State: "$_id",
-                Cities: 1
+                cities: 1
             }
         }
     ], function(error, result) {
@@ -32,7 +36,7 @@ var getAllCitiesByStateWise = function(callback) {
             callback(error, null);
         } else {
             // logger.debug(METHOD_NAME + JSON.stringify(result));
-            callback(null, result);
+            callback(null, result[0]);
         }
     })
 };
