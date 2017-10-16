@@ -1,0 +1,23 @@
+<center><h2>Form Preview</h2></center><br><hr>
+
+<div class="row">
+	<div class="col-sm-3 ">
+		<select class="form-control text-center" id="sel1" ng-model="formName" autofocus
+	    ng-options="item.formName for item in formTemplate"  ng-change="toChangeFormName(formName)">    
+	        <option value="" disabled selected> Select Form </option> 
+	    </select>
+	</div>  
+</div>	
+</br>  
+<div class="row"> 
+<div class="col-sm-3 ">               
+<h2 class="text-center">{{formName.formName}}</h2>
+</div>
+</div>
+<br>
+<div ng-if="formName" ng-repeat="element in selectedObj.formTemplate">
+	<input type="{{element.type}}" ng-if="element.type=='text'" placeholder="{{element.label}}" />
+	<button type="{{element.type}}" ng-if="element.type=='button'" ng-click="submit()">{{element.label}}</button>
+	<br/><br/>
+</div>
+

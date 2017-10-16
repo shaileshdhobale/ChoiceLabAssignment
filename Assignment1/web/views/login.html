@@ -1,0 +1,15 @@
+<div ng-controller="LoginController" class="modal fade in" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;" >
+	<div class="modal-dialog" >
+		<div class="loginmodal-container">
+			<h1>Phone Gallery</h1><br>
+		  	<form>
+				<input type="text" name="user" placeholder="Username" ng-model="loginData.userId">
+				<input type="password" name="pass" placeholder="Password" ng-model="loginData.password">
+				<input type="submit" name="login" class="login loginmodal-submit" value="Login" ng-href='#here' ng-click="authenticateUser()">
+		  	</form>
+			<div class="login-help">
+				<a href="#">Register</a> - <a href="#">Forgot Password</a>
+			</div>
+		</div>
+	</div>
+</div>

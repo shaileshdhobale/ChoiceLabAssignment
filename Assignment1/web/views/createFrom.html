@@ -1,0 +1,34 @@
+<div>
+<center><h2>Create New Form</h2></center>
+</div>
+<br>
+<hr>
+<br>
+<div class="row">
+<div class="col-md-12">
+	<div class="col-md-4 pull-left">
+		<input type = "text" placeholder=" Form Name" ng-model="formName"/>
+		<br><br>
+		<button type="button" ng-click="isText=true;isButton=false;">Add Text Field</button><br><br>
+		<button type="button" ng-click="isButton=true;isText=false">Add Button</button><br><br>
+		<button type="button" ng-click="saveForm()">Save Form</button>
+	</div>
+
+	<br><br>
+	<div class="col-md-8 pull-right">
+		<div ng-show="isText">
+			<input type = "text" placeholder=" Add Label to Text Field" ng-model="textLabel"/><br><br>
+			<input type = "text" placeholder=" Add Id to Text Field" ng-model="textId"/><br><br>
+			<button type="button" ng-click="addFormElement()">Add Element</button>
+		</div>
+
+		<div ng-show="isButton">
+			<input type = "text" placeholder=" Add Label to Text Field" ng-model="buttonLabel"/><br><br>
+			<button type="button" ng-click="addFormElement()">Add Element</button>
+		</div>
+	</div>
+</div>
+</div>
+<br>
+<br>
+<hr>
